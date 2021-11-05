@@ -1,7 +1,9 @@
 package io.turntabl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ClientRegister {
@@ -63,6 +65,20 @@ public class ClientRegister {
 
         }
 
+    }
+
+    public Map<ServiceLevel, Long> getClientsInsights() {
+        Map<ServiceLevel, Long> countedSLAClientGroups = new HashMap<>();
+
+        //grouping all the clients by groups the SLAs they belong to
+        var groupedClients = allClients.stream().collect(Collectors.groupingBy(cli -> cli.getClientServiceLevel()));
+
+        //returning each SLA and its client count
+        groupedClients.entrySet().forEach(slaGroup -> {
+            countedSLAClientGroups.put(slaGroup.getKey(), slaGroup.getValue().stream().count());
+        });
+
+        return countedSLAClientGroups;
     }
 
 }
