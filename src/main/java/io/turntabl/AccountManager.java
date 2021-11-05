@@ -21,4 +21,12 @@ public class AccountManager implements Manager {
     public String getManagerName() {
         return acmFName + " " + acmOName;
     }
+
+    @Override
+    public String toString() {
+        return "AccountManager{" +
+                "acmFName='" + acmFName + '\'' +
+                ", acmOName='" + acmOName + '\'' +
+                '}';
+    }
 }

@@ -4,6 +4,8 @@ public class CorporateClient extends Client {
 
     // ******************** Properties ******************** //
 
+    //Assuming each corporate account will later have more logic related to their account manager
+    //hence an AccountManager object will be optimal for future scalability
     private AccountManager accountManager;
 
     // ******************** Constructors ******************** //

@@ -7,14 +7,15 @@ plugins {
 group 'io.turntabl'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 10
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testCompile group: 'junit', name: 'junit', version: '4.13.2'
 }
 
 application {
@@ -33,3 +34,10 @@ tasks.startScripts {
 application {
     mainClassName = 'io.turntabl.TCMS'
 }
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
+
+//targetCompatibility = JavaVersion.VERSION_10
+targetCompatibility = JavaVersion.VERSION_1_10
