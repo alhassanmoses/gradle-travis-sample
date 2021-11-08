@@ -47,7 +47,7 @@ public class ClientRegister {
 
     public List<Client> getGoldClientsContacts() {
 
-        return allClients.stream().filter(cli -> cli.getClientServiceLevel() == ServiceLevel.Gold).collect(Collectors.toList());
+        return allClients.stream().filter(cli -> cli.getClientServiceLevel() == ServiceLevel.Gold).map(Client::getContactName).collect(Collectors.toList());
 
     }
 
