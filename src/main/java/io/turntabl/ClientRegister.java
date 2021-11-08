@@ -68,8 +68,12 @@ public class ClientRegister {
     }
 
     public Map<ServiceLevel, Long> getClientsInsights() {
+        
+        //old implemntation
+        /*
         Map<ServiceLevel, Long> countedSLAClientGroups = new HashMap<>();
-
+        
+        
         //grouping all the clients by groups the SLAs they belong to
         var groupedClients = allClients.stream().collect(Collectors.groupingBy(cli -> cli.getClientServiceLevel()));
 
@@ -77,8 +81,12 @@ public class ClientRegister {
         groupedClients.entrySet().forEach(slaGroup -> {
             countedSLAClientGroups.put(slaGroup.getKey(), slaGroup.getValue().stream().count());
         });
+        
 
         return countedSLAClientGroups;
+        */
+        
+        return allClients.stream().collect(Collectors.groupingBy(Client::getClientServiceLevel, Collectors.counting()));
     }
 
 }
